@@ -168,7 +168,7 @@ async def ban(bon):
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#BAN\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {bon.chat.title}(`{bon.chat_id}`)"
+                f"CHAT: {bon.chat.title} `{bon.chat_id}`"
             )
 
 
