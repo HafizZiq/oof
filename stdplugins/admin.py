@@ -127,12 +127,17 @@ async def ban(bon):
             await bon.edit(NO_ADMIN)
             return
 
-        user = await get_user_from_event(bon)
+        user = await get_user_from_event(spdr)
         if user:
             pass
         else:
             return
 
+        self_user = await spdr.client.get_me()
+
+        if user.id == self_user.id:
+        	await spdr.edit("`Ban Error! You are not supposed to ban yourself!`")
+        	return
 
         # Announce that we're going to whack the pest
         await bon.edit("`Whacking the pest!`")
@@ -188,15 +193,20 @@ async def nothanos(unbon):
             await unbon.edit(NO_ADMIN)
             return
 
-        # If everything goes well...
-        await unbon.edit("`Unbanning...`")
-
-        user = await get_user_from_event(unbon)
+        user = await get_user_from_event(spdr)
         if user:
             pass
         else:
             return
 
+        self_user = await spdr.client.get_me()
+
+        if user.id == self_user.id:
+        	await spdr.edit("`Unban Error! You are not supposed to unban yourself!`")
+        	return
+
+        # If everything goes well...
+        await unbon.edit("`Unbanning...`")
         try:
             await unbon.client(EditBannedRequest(
                 unbon.chat_id,
@@ -209,8 +219,8 @@ async def nothanos(unbon):
                 await unbon.client.send_message(
                     Config.PRIVATE_GROUP_BOT_API_ID,
                     "#UNBAN\n"
-                    f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
-                    f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
+                    f"User: [{user.first_name}](tg://user?id={user.id})\n"
+                    f"Group: {bon.chat.title} [`{bon.chat_id}`]"
                 )
         except UserIdInvalidError:
             await unbon.edit("`Uh oh my unban logic broke!`")
@@ -265,8 +275,8 @@ async def spider(spdr):
                 await spdr.client.send_message(
                     Config.PRIVATE_GROUP_BOT_API_ID,
                     "#MUTE\n"
-                    f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
-                    f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
+                    f"User: [{user.first_name}](tg://user?id={user.id})\n"
+                    f"Group: {bon.chat.title} [`{bon.chat_id}`]"
                 )
         except UserIdInvalidError:
             await spdr.edit("`Uh oh my unban logic broke!`")
@@ -288,14 +298,20 @@ async def unmoot(unmot):
             await unmot.edit(NO_ADMIN)
             return
 
-        # If admin or creator, inform the user and start unmuting
-        await unmot.edit('```Unmuting...```')
-        user = await get_user_from_event(unmot)
+        user = await get_user_from_event(spdr)
         if user:
             pass
         else:
             return
 
+        self_user = await spdr.client.get_me()
+
+        if user.id == self_user.id:
+        	await spdr.edit("`Unmute Error! You are not supposed to unmute yourself!`")
+        	return
+
+        # If admin or creator, inform the user and start unmuting
+        await unmot.edit('```Unmuting...```')
         try:
             await unmot.client(
                 EditBannedRequest(
@@ -313,8 +329,8 @@ async def unmoot(unmot):
             await unmot.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#UNMUTE\n"
-                f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
-                f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
+                f"User: [{user.first_name}](tg://user?id={user.id})\n"
+                f"Group: {bon.chat.title} [`{bon.chat_id}`]"
             )
 
 
@@ -443,8 +459,8 @@ async def kick(usr):
             await usr.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#KICK\n"
-                f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
-                f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
+                f"User: [{user.first_name}](tg://user?id={user.id})\n"
+                f"Group: {bon.chat.title} [`{bon.chat_id}`]"
             )
 
 
