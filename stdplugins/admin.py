@@ -167,8 +167,8 @@ async def ban(bon):
             await bon.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#BAN\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {bon.chat.title}(`{bon.chat_id}`)"
+                f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
+                f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
             )
 
 
@@ -209,8 +209,8 @@ async def nothanos(unbon):
                 await unbon.client.send_message(
                     Config.PRIVATE_GROUP_BOT_API_ID,
                     "#UNBAN\n"
-                    f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                    f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)"
+                    f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
+                    f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
                 )
         except UserIdInvalidError:
             await unbon.edit("`Uh oh my unban logic broke!`")
@@ -265,8 +265,8 @@ async def spider(spdr):
                 await spdr.client.send_message(
                     Config.PRIVATE_GROUP_BOT_API_ID,
                     "#MUTE\n"
-                    f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                    f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)"
+                    f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
+                    f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
                 )
         except UserIdInvalidError:
             await spdr.edit("`Uh oh my unban logic broke!`")
@@ -313,8 +313,8 @@ async def unmoot(unmot):
             await unmot.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#UNMUTE\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {unmot.chat.title}(`{unmot.chat_id}`)"
+                f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
+                f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
             )
 
 
@@ -443,8 +443,8 @@ async def kick(usr):
             await usr.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#KICK\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n"
+                f"*User:* [{user.first_name}](tg://user?id={user.id})\n"
+                f"*Group:* {bon.chat.title} [`{bon.chat_id}`]"
             )
 
 
