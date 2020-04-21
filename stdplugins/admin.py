@@ -266,7 +266,7 @@ async def spider(spdr):
                     Config.PRIVATE_GROUP_BOT_API_ID,
                     "#MUTE\n"
                     f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                    f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)"
+                    f"CHAT: {spdr.chat.title} `{spdr.chat_id}`"
                 )
         except UserIdInvalidError:
             await spdr.edit("`Uh oh my unban logic broke!`")
@@ -314,7 +314,7 @@ async def unmoot(unmot):
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#UNMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {unmot.chat.title}(`{unmot.chat_id}`)"
+                f"CHAT: {unmot.chat.title} `{unmot.chat_id}` "
             )
 
 
@@ -444,7 +444,7 @@ async def kick(usr):
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 "#KICK\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n"
+                f"CHAT: {usr.chat.title} `{usr.chat_id}`\n"
             )
 
 
