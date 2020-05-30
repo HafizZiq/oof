@@ -9,9 +9,8 @@
 
 import re
 from sre_constants import error as sre_err
-from userbot import CMD_HELP
 from asyncio import sleep
-from userbot.events import register
+from uniborg.util import register
 
 DELIMITERS = ("/", ":", "|", "_")
 
@@ -102,11 +101,3 @@ async def sed(command):
             return
         if text:
             await command.edit(f"Did you mean? \n\n{text}")
-
-
-CMD_HELP.update({
-    "sed":
-    ".s<delimiter><old word(s)><delimiter><new word(s)>\
-    \nUsage: Replaces a word or words using sed.\
-    \nDelimiters: `/, :, |, _`"
-})
