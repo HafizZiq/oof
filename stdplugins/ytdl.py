@@ -2,7 +2,7 @@
 
 """
 Audio and video downloader using Youtube-dl
-.yta To Download in flac format
+.yta To Download in mp3 format
 .ytv To Download in mp4 format
 """
 
@@ -102,11 +102,11 @@ async def download_video(v_url):
             True,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'flac',
-                'preferredquality': '320',
+                'preferredcodec': 'mp3',
+                'preferredquality': '256',
             }],
             'outtmpl':
-            '%(id)s.flac',
+            '%(id)s.mp3',
             'quiet':
             True,
             'logtostderr':
@@ -183,7 +183,7 @@ async def download_video(v_url):
         \nby *{ytdl_data['uploader']}*")
         await v_url.client.send_file(
             v_url.chat_id,
-            f"{ytdl_data['id']}.flac",
+            f"{ytdl_data['id']}.mp3",
             supports_streaming=True,
             attributes=[
                 DocumentAttributeAudio(duration=int(ytdl_data['duration']),
@@ -193,8 +193,8 @@ async def download_video(v_url):
             progress_callback=lambda d, t: asyncio.get_event_loop(
             ).create_task(
                 progress(d, t, v_url, c_time, "Uploading..",
-                         f"{ytdl_data['title']}.flac")))
-        os.remove(f"{ytdl_data['id']}.flac")
+                         f"{ytdl_data['title']}.mp3")))
+        os.remove(f"{ytdl_data['id']}.mp3")
         await v_url.delete()
     elif video:
         await v_url.edit(f"`Preparing to upload video:`\
@@ -211,3 +211,4 @@ async def download_video(v_url):
                          f"{ytdl_data['title']}.mp4")))
         os.remove(f"{ytdl_data['id']}.mp4")
         await v_url.delete()
+        
