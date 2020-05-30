@@ -1,4 +1,4 @@
-
+# Redited
 from telethon import events
 import subprocess
 from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotModifiedError
@@ -9,19 +9,18 @@ from uniborg.util import admin_cmd
 import glob
 import os
 try:
- import instantmusic , subprocess
+    import instantmusic , subprocess
 except:
- os.system("pip install instantmusic")
- 
+    os.system("pip install instantmusic")
+
 
 
 os.system("rm -rf *.mp3")
 
 
 def bruh(name):
-    
     os.system("instantmusic -q -s "+name)
-    
+
 
 @borg.on(admin_cmd(pattern="song ?(.*)"))
 async def _(event):
@@ -33,11 +32,15 @@ async def _(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-    await event.edit("ok finding the song")    
+    await event.edit("Ok finding the song...")    
     bruh(str(cmd))
     l = glob.glob("*.mp3")
-    loa = l[0]
-    await event.edit("sending song")
+    try:
+        loa = l[0]
+    except IndexError:
+        await event.edit("Search failed.")
+        return False
+    await event.edit("Sending song...")
     await borg.send_file(
                 event.chat_id,
                 loa,
