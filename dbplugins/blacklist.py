@@ -17,7 +17,7 @@ from uniborg.util import admin_cmd, is_admin
 
 @borg.on(admin_cmd(incoming=True))
 async def on_new_message(event):
-    if await is_admin(even.chat_id, event.from_id):
+    if await is_admin(event.client, even.chat_id, event.from_id):
         return
     if borg.me.id == event.from_id:
         return

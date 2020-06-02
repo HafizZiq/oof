@@ -147,8 +147,8 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-async def is_admin(chat_id, user_id):
-    req_jo = await borg(GetParticipantRequest(
+async def is_admin(client, chat_id, user_id):
+    req_jo = await client(GetParticipantRequest(
         channel=chat_id,
         user_id=user_id
     ))
@@ -159,12 +159,12 @@ async def is_admin(chat_id, user_id):
 
 
 # Not that Great but it will fix sudo reply
-async def edit_or_reply(client, user_id, text):
+async def edit_or_reply(event, user_id, text):
     if user_id in Config.SUDO_USERS:
-      reply_to = await client.get_reply_message()
+      reply_to = await event.get_reply_message()
       if reply_to:
         return await reply_to.reply(text)
       else:
-        return await client.reply(text)
+        return await event.reply(text)
     else:
-        return await client.edit(text)
+        return await event.edit(text)
