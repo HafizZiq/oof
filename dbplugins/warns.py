@@ -38,7 +38,7 @@ async def _(event):
         return
     warn_reason = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
-    if await is_admin(event.chat_id, reply_message.from_id):
+    if await is_admin(event.client, event.chat_id, reply_message.from_id):
         return
     limit, soft_warn = sql.get_warn_setting(event.chat_id)
     num_warns, reasons = sql.warn_user(reply_message.from_id, event.chat_id, warn_reason)
@@ -86,5 +86,3 @@ async def _(event):
     reply_message = await event.get_reply_message()
     sql.reset_warns(reply_message.from_id, event.chat_id)
     await event.edit("Warnings have been reset!")
-
-
