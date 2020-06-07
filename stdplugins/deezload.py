@@ -71,7 +71,7 @@ async def _(event):
         os.makedirs(temp_dl_path)
 
     required_link = event.pattern_match.group(1)
-	required_qty = event.pattern_match.group(2)
+    required_qty = event.pattern_match.group(2)
 
     await event.edit(strings["processing"])
 
