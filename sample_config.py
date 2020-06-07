@@ -108,6 +108,8 @@ class Config(object):
     # define the "types" that should be uplaoded as streamable
     TL_VID_STREAM_TYPES = ("MP4", "WEBM")
     TL_MUS_STREAM_TYPES = ("MP3", "WAV", "FLAC")
+    # Deeer ARL Token
+    DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
 
 
 class Production(Config):
