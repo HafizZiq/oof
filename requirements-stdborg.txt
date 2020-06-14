@@ -5,7 +5,6 @@ beautifulsoup4
 cfscrape
 coffeehouse
 cryptg
-deezloader
 emoji
 googletrans
 google_images_download==2.8.0
